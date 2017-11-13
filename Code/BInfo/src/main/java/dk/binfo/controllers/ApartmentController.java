@@ -30,7 +30,7 @@ public class ApartmentController {
     @Autowired
     private ApartmentService apartmentService;
 
-    @RequestMapping("/admin/apartment") // This means URL's start with /admin/apartment (after Application path)
+    @RequestMapping("/admin/apartment") // This means URL's start with /demo (after Application path)
     public ModelAndView showApartment() {
         ModelAndView modelAndView = new ModelAndView("/admin/apartment", "apartment", repository.findAll());
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
