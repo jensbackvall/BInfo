@@ -4,9 +4,12 @@ import dk.binfo.models.Apartment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("apartmentRepository")
+@Repository("apartmentRepositoryy")
 public interface ApartmentRepository extends JpaRepository<Apartment, Integer> {
+    Apartment findApartmentByNumber(int number);
 }
+
+
 
 /*
 In the early days you now had to create a DAO class which has methods for creating, updating, deleting and reading data from the table. With Spring Data on the other hand all you need is an interface that extends another interface. For example:
