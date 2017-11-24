@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository("apartmentRepository")
 public interface ApartmentRepository extends JpaRepository<Apartment, Integer> {
-    Apartment findApartmentByNumber(int number);
+   Apartment findApartmentByNumber(String number); //Denne bliver ikke brugt. ikke fjern den
 }
 
 

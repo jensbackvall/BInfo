@@ -11,13 +11,12 @@ import java.util.List;
 @Service("apartmentService")
 public class ApartmentImpl implements ApartmentService {
 
-
     @Autowired
     private ApartmentRepository apartmentRepository;
 
 
-    @Override
-    public Apartment findApartmentByNumber(int number) {
+    @Override //Denne bliver ikke brugt. ikke fjern den
+    public Apartment findApartmentByNumber(String number) {
 
         return apartmentRepository.findApartmentByNumber(number);
     }

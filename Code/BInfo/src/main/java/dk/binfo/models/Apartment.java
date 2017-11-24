@@ -19,7 +19,7 @@ public class Apartment {
     private String address;
     @Column(name = "number")
   //  @NotNull(message = "*Du mangler antal værelser")
-    private Integer number;
+    private String number;
     @Column(name = "rooms")
   //  @NotNull(message = "*Du mangler antal værelser")
     private Integer rooms;
@@ -52,11 +52,11 @@ public class Apartment {
         this.address = address;
     }
 
-    public Integer getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
