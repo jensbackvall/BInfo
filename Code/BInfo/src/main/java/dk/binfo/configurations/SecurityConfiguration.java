@@ -39,11 +39,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/").permitAll()
 				.antMatchers("/login").permitAll()
 				.antMatchers("/registration").permitAll()
-				.antMatchers("/error").hasAuthority("ADMIN")
+				.antMatchers("/error").permitAll()
+				//TODO lav user bruger indstillinger side (/user/settings Controller + HTML) - MORTEN
+				//TODO lav admin bruger indstillinger (/admin/settings Controller + html) - MORTEN
+				.antMatchers("/user/**").hasAuthority("user") //TODO lav en user home side (Controller, html)
 				.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
 				.authenticated().and().csrf().disable().formLogin()
 				.loginPage("/login").failureUrl("/login?error=true")
-				.defaultSuccessUrl("/admin/home")
+				.defaultSuccessUrl("/admin/home") //TODO Ændre til en user homepage. Og lav en userpage.
 				.usernameParameter("email")
 				.passwordParameter("password")
 				.and().rememberMe().key("rem-me-key").rememberMeParameter("remember-me").rememberMeCookieName("remember-me") // TODO Check om der er sikkershedsproblemer
