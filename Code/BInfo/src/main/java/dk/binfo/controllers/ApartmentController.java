@@ -48,10 +48,10 @@ public class ApartmentController {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-        Apartment apartmentExists = apartmentService.findApartmentByNumber(apartment.getNumber());
+       /* Apartment apartmentExists = apartmentService.findApartmentByNumber(apartment.getNumber());
         if (apartmentExists != null) {
             bindingResult.rejectValue("number", "error.apartment", "There is already a apartment registered with the number provided"); //TODO ændre til dansk
-        }
+        } */
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("/admin/add");//TODO ændre til /admin/apartment/add
         } else {

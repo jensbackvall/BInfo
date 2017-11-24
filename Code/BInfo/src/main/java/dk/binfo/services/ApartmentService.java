@@ -5,7 +5,7 @@ import dk.binfo.models.Apartment;
 import java.util.List;
 
 public interface ApartmentService {
-    Apartment findApartmentByNumber(int number);
+    Apartment findApartmentByNumber(String number);
 
     Apartment delete(int id);
     List<Apartment> findAll(); // DDENNE KASDKASDAS DA TESTES.
