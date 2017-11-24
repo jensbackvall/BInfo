@@ -43,30 +43,30 @@ public class ApartmentController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/add", method = RequestMethod.POST) //TODO ændre til /admin/apartment/add
     public ModelAndView createNewApartment(@Valid Apartment apartment, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         Apartment apartmentExists = apartmentService.findApartmentByNumber(apartment.getNumber());
         if (apartmentExists != null) {
-            bindingResult.rejectValue("number", "error.apartment", "There is already a apartment registered with the number provided");
+            bindingResult.rejectValue("number", "error.apartment", "There is already a apartment registered with the number provided"); //TODO ændre til dansk
         }
         if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("/admin/add");
+            modelAndView.setViewName("/admin/add");//TODO ændre til /admin/apartment/add
         } else {
             apartmentService.saveApartment(apartment);
-            modelAndView.addObject("successMessage", "Apartment has been registered successfully");
+            modelAndView.addObject("successMessage", "Apartment has been registered successfully"); //TODO ændre til dansk
             modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
             modelAndView.addObject("userEmail", user.getEmail());
             modelAndView.addObject("apartment", new Apartment());
-            modelAndView.setViewName("/admin/add");
+            modelAndView.setViewName("/admin/add"); //TODO ændre til /admin/apartment/add
 
         }
         return modelAndView;
     }
 
-    @RequestMapping("/admin/add")
+    @RequestMapping("/admin/add") //TODO ændre til /admin/apartment/add
     public ModelAndView add(){
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -75,13 +75,13 @@ public class ApartmentController {
         modelAndView.addObject("userEmail", user.getEmail());
         modelAndView.addObject("adminMessage","Fedt man spa du er admin");
         modelAndView.addObject("apartment", new Apartment());
-        modelAndView.setViewName("/admin/add");
+        modelAndView.setViewName("/admin/add"); //TODO ændre til /admin/apartment/add
         return modelAndView;
     }
 
-    @RequestMapping(value="/admin/edit/{id}", method=RequestMethod.GET)
+    @RequestMapping(value="/admin/edit/{id}", method=RequestMethod.GET) //TODO ændre til /admin/apartment/edit/{id}
     public ModelAndView editApartmentPage(@PathVariable Integer id) {
-        ModelAndView modelAndView = new ModelAndView("/admin/add-edit");
+        ModelAndView modelAndView = new ModelAndView("/admin/add-edit"); //TODO ændre til /admin/apartment/edit/{id}
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
@@ -93,18 +93,18 @@ public class ApartmentController {
         return modelAndView;
     }
 
-    @RequestMapping(value="/admin/edit/{id}", method=RequestMethod.POST)
+    @RequestMapping(value="/admin/edit/{id}", method=RequestMethod.POST) //TODO ændre til /admin/apartment/edit/{id}
     public ModelAndView editApartment(@ModelAttribute @Valid Apartment apartment, BindingResult bindingResult, @PathVariable Integer id){
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
         modelAndView.addObject("userEmail", user.getEmail());
-       // modelAndView.addObject("apartment", new Apartment());
+       // modelAndView.addObject("apartment", new Apartment()); //TODO JEG HAR INGEN IDE PATRICK
 
         if (bindingResult.hasErrors())
         {
-            modelAndView.setViewName("/admin/add-edit");
+            modelAndView.setViewName("/admin/edit"); //TODO ændre til /admin/apartment/edit/{id}
         }
 
         modelAndView.setViewName("redirect:/admin/apartment");
@@ -112,7 +112,7 @@ public class ApartmentController {
         return modelAndView;
     }
 
-    @RequestMapping(value="/admin/delete/{id}", method=RequestMethod.GET)
+    @RequestMapping(value="/admin/delete/{id}", method=RequestMethod.GET) //TODO ændre til /admin/apartment/delete/{id}
     public ModelAndView deleteApartment(@PathVariable Integer id) {
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/apartment");
         Apartment apartment = apartmentService.delete(id);

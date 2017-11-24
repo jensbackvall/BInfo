@@ -46,20 +46,20 @@ public class LoginController {
 		ModelAndView modelAndView = new ModelAndView();
 		User userExists = userService.findUserByEmail(user.getEmail());
 		if (userExists != null) {
-			bindingResult.rejectValue("email", "error.user", "There is already a user registered with the email provided");
+			bindingResult.rejectValue("email", "error.user", "There is already a user registered with the email provided"); //TODO ændre til dansk
 		}
 		if (bindingResult.hasErrors()) {
 			modelAndView.setViewName("registration");
 		} else {
 			userService.saveUser(user);
-			modelAndView.addObject("successMessage", "User has been registered successfully");
+			modelAndView.addObject("successMessage", "User has been registered successfully"); //TODO ændre til dansk
 			modelAndView.addObject("user", new User());
 			modelAndView.setViewName("registration");
 		}
 		return modelAndView;
 	}
 
-	@RequestMapping(value={"/admin/home", "/admin"}, method = RequestMethod.GET)
+	@RequestMapping(value={"/admin/home", "/admin"}, method = RequestMethod.GET) //TODO Vælg om der skal være /admin også
 	public ModelAndView home(){
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
