@@ -37,7 +37,6 @@ public class ApartmentController {
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
         modelAndView.addObject("userEmail", user.getEmail() + "");
-        modelAndView.addObject("userID", user.getId() + "");
         modelAndView.addObject("adminMessage","Fedt man spa du er admin");
         modelAndView.setViewName("admin/apartment");
 
@@ -60,7 +59,6 @@ public class ApartmentController {
             modelAndView.addObject("successMessage", "Apartment has been registered successfully");
             modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
             modelAndView.addObject("userEmail", user.getEmail());
-            modelAndView.addObject("userID", user.getId() + " ");
             modelAndView.addObject("apartment", new Apartment());
             modelAndView.setViewName("/admin/add");
 
@@ -75,7 +73,6 @@ public class ApartmentController {
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
         modelAndView.addObject("userEmail", user.getEmail());
-        modelAndView.addObject("userID", user.getId() + " ");
         modelAndView.addObject("adminMessage","Fedt man spa du er admin");
         modelAndView.addObject("apartment", new Apartment());
         modelAndView.setViewName("/admin/add");
@@ -89,7 +86,6 @@ public class ApartmentController {
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
         modelAndView.addObject("userEmail", user.getEmail());
-        modelAndView.addObject("userID", user.getId() + " ");
 
 
         Apartment apartment = apartmentService.findById(id);
@@ -104,7 +100,6 @@ public class ApartmentController {
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
         modelAndView.addObject("userEmail", user.getEmail());
-        modelAndView.addObject("userID", user.getId() + " ");
        // modelAndView.addObject("apartment", new Apartment());
 
         if (bindingResult.hasErrors())
