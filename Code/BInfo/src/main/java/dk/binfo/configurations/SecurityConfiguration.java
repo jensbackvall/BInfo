@@ -40,8 +40,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/login").permitAll()
 				.antMatchers("/registration").permitAll()
 				.antMatchers("/error").permitAll()
-				//TODO lav user bruger indstillinger side (/user/settings Controller + HTML) - MORTEN
-				//TODO lav admin bruger indstillinger (/admin/settings Controller + html) - MORTEN
+				// TODO admin skal kunne se alle ventelister (/admin/list/Family/intern/ekstern/connectMrawesomeSexy)
+				// TODO lave en SQL side hvor admin kan se hvornår en bruger loggede sidst ind og deres IP.
+				// TODO lave så admin kan godkende nyopskrevet brugere.
+				// TODO Admin skal godkende en bruger har betalt
+				// TODO brugere skal kunne registrere sig som brugere
+				// TODO Brugere skal kunne opskrive sig til en venteliste
+				// TODO brugere skal kunne indtaste og redigere deres ønske til lejligheder og makspris
+				// TODO Se placering på venteliste
+				// TODO lave at admin får en mail når en bruger opretter sig og sende mail til brugere
+				// TODO Sende mail til en bruger hvis de ikke har betalt 1 måned forud.
+				// TODO Generere en venteliste til PDF til admin
+				// TODO admin skal kunne oprette en ny bruger/se alle brugere og søge/edit (/admin/user/ + HTML)
+				// TODO lav user bruger indstillinger side (/user/settings Controller + HTML) - MORTEN
+				// TODO lav admin bruger indstillinger (/admin/settings Controller + html) - MORTEN
 				.antMatchers("/user/**").hasAuthority("user") //TODO lav en user home side (Controller, html)
 				.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
 				.authenticated().and().csrf().disable().formLogin()
