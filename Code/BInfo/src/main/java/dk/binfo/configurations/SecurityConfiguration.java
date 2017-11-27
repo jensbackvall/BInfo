@@ -62,7 +62,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
 				.authenticated().and().csrf().disable().formLogin()
 				.loginPage("/login").failureUrl("/login?error=true")
-				.defaultSuccessUrl("/user/home") //TODO Ændre til en user homepage. Og lav en userpage.
+				.defaultSuccessUrl("/home") //TODO Ændre til en user homepage. Og lav en userpage.
 				.usernameParameter("email")
 				.passwordParameter("password")
 				.and().rememberMe().key("rem-me-key").rememberMeParameter("remember-me").rememberMeCookieName("remember-me") // TODO Check om der er sikkershedsproblemer
