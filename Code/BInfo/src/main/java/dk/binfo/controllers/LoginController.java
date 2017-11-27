@@ -79,14 +79,14 @@ public class LoginController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value={"/admin/settings"}, method = RequestMethod.GET)
-	public ModelAndView adminSettings(){
+	@RequestMapping(value={"/settings"}, method = RequestMethod.GET)
+	public ModelAndView settings(){
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
 		modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
 		modelAndView.addObject("userEmail", user.getEmail());
-		modelAndView.setViewName("admin/settings");
+		modelAndView.setViewName("/settings");
 		return modelAndView;
 	}
 	

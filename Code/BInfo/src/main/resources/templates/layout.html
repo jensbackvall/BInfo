@@ -31,7 +31,7 @@
 <body>
 <header class="main-header" th:fragment="site-header">
     <!-- Logo -->
-    <a href="/admin/home" class="logo">
+    <a href="/home" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>B</b>Info</span>
         <!-- logo for regular state and mobile devices -->
@@ -84,8 +84,7 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a sec:authorize="hasAuthority('ADMIN')" href="/admin/settings" class="btn btn-default btn-flat">Indstillinger</a>
-                                <a sec:authorize="hasAuthority('user')" href="/user/settings" class="btn btn-default btn-flat">Indstillinger</a> //TODO Denne skal laves så den finder i databasen hvem der er hvilken bruger
+                                <a href="/settings" class="btn btn-default btn-flat">Indstillinger</a>
                             </div>
                             <div class="pull-right">
                                 <a href="/logout" class="btn btn-default btn-flat">Log af</a>
@@ -138,7 +137,7 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">Menu</li>
             <!-- Optionally, you can add icons to the links -->
-            <li th:classappend="${#httpServletRequest.getRequestURI() == '/user/home' ? 'active':''}"><a th:href="@{/user/home}"><i class="fa fa-home"></i><span>Home</span></a></li>
+            <li th:classappend="${#httpServletRequest.getRequestURI() == '/home' ? 'active':''}"><a th:href="@{/home}"><i class="fa fa-home"></i><span>Home</span></a></li>
 
 
             <li class="treeview" sec:authorize="hasAuthority('ADMIN')">
@@ -149,9 +148,7 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li th:classappend="${#httpServletRequest.getRequestURI() == '/admin/home' ? 'active':''}"><a th:href="@{/admin/home}"><i class="fa fa-home"></i><span>Home</span></a></li>
-                    <li th:classappend="${#httpServletRequest.getRequestURI() == '/admin/settings' ? 'active':''}"><a th:href="@{/admin/settings}"><i class="fa fa-cogs"></i><span>Settings</span></a></li>
-                    <li th:classappend="${#httpServletRequest.getRequestURI() == '/admin/apartment' ? 'active':''}"><a th:href="@{/admin/apartment}"><i class="fa fa-users"></i><span>Lejligheder</span></a></li>
+                    <li th:classappend="${#httpServletRequest.getRequestURI() == '/apartment' ? 'active':''}"><a th:href="@{/apartment}"><i class="fa fa-users"></i><span>Lejligheder</span></a></li>
                 </ul>
             </li>
         </ul>
