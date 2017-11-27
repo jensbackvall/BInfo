@@ -134,6 +134,7 @@
             <li class="header">Menu</li>
             <!-- Optionally, you can add icons to the links -->
             <li th:classappend="${#httpServletRequest.getRequestURI() == '/admin/home' ? 'active':''}"><a th:href="@{/admin/home}"><i class="fa fa-home"></i><span>Home</span></a></li>
+            <li th:classappend="${#httpServletRequest.getRequestURI() == '/admin/settings' ? 'active':''}"><a th:href="@{/admin/settings}"><i class="fa fa-cogs"></i><span>Settings</span></a></li>
             <li th:classappend="${#httpServletRequest.getRequestURI() == '/admin/apartment' ? 'active':''}"><a th:href="@{/admin/apartment}"><i class="fa fa-users"></i><span>Lejligheder</span></a></li>
         </ul>
         <!-- /.sidebar-menu -->
