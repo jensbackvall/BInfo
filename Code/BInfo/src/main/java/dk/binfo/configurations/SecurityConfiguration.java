@@ -58,11 +58,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				// TODO admin skal kunne oprette en ny bruger/se alle brugere og søge/edit (/admin/user/ + HTML)
 				// TODO lav user bruger indstillinger side (/user/settings Controller + HTML) - MORTEN
 				// TODO lav admin bruger indstillinger (/admin/settings Controller + html) - MORTEN
-				.antMatchers("/user/**").hasAuthority("user") //TODO lav en user home side (Controller, html)
+				.antMatchers("/user/**").hasAuthority("user") //TODO lav en user adminHome side (Controller, html)
 				.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
 				.authenticated().and().csrf().disable().formLogin()
 				.loginPage("/login").failureUrl("/login?error=true")
-				.defaultSuccessUrl("/admin/home") //TODO Ændre til en user homepage. Og lav en userpage.
+				.defaultSuccessUrl("/user/home") //TODO Ændre til en user homepage. Og lav en userpage.
 				.usernameParameter("email")
 				.passwordParameter("password")
 				.and().rememberMe().key("rem-me-key").rememberMeParameter("remember-me").rememberMeCookieName("remember-me") // TODO Check om der er sikkershedsproblemer
@@ -112,7 +112,7 @@ Lines from 64 to 68 → Due we have implemented Spring Security we need to let S
 
 /* The WebSecurityConfig class is annotated with @EnableWebSecurity to enable Spring Security’s web security support and provide the Spring MVC integration. It also extends WebSecurityConfigurerAdapter and overrides a couple of its methods to set some specifics of the web security configuration.
 
-The configure(HttpSecurity) method defines which URL paths should be secured and which should not. Specifically, the "/" and "/home" paths are configured to not require any authentication. All other paths must be authenticated.
+The configure(HttpSecurity) method defines which URL paths should be secured and which should not. Specifically, the "/" and "/adminHome" paths are configured to not require any authentication. All other paths must be authenticated.
 
 When a user successfully logs in, they will be redirected to the previously requested page that required authentication. There is a custom "/login" page specified by loginPage(), and everyone is allowed to view it.
 

@@ -48,15 +48,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SecurityConfiguration.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SecurityConfiguration.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dk/binfo/configurations/SecurityConfiguration.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2240">
               <caret line="70" column="21" lean-forward="false" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="21" />
-              <folding>
-                <element signature="e#4156#4157#0" expanded="true" />
-                <element signature="e#4201#4202#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -112,11 +109,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/dk/binfo/controllers/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="67" column="5" lean-forward="false" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
+            <state relative-caret-position="587">
+              <caret line="90" column="5" lean-forward="false" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -126,9 +123,13 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/dk/binfo/controllers/ApartmentController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="617">
-              <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+              <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <marker date="1511787373127" expanded="true" signature="3864:4022" ph="{...}" />
+                <marker date="1511787373127" expanded="true" signature="4174:4712" ph="{...}" />
+                <marker date="1511787373127" expanded="true" signature="4933:5653" ph="{...}" />
+                <marker date="1511787373127" expanded="true" signature="5805:5983" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -138,7 +139,7 @@
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="880">
-              <caret line="28" column="55" lean-forward="true" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
+              <caret line="28" column="55" lean-forward="false" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -252,9 +253,9 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/accessDenied.html" />
         <option value="$PROJECT_DIR$/src/main/java/dk/binfo/configurations/SecurityConfiguration.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/dk/binfo/controllers/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/layout.html" />
         <option value="$PROJECT_DIR$/src/main/java/dk/binfo/configurations/CustomAccessDeniedHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/binfo/controllers/LoginController.java" />
       </list>
     </option>
   </component>
@@ -619,12 +620,12 @@
       <workItem from="1509457026708" duration="94000" />
       <workItem from="1510229943851" duration="6628000" />
       <workItem from="1511425635603" duration="4432000" />
-      <workItem from="1511514217817" duration="25983000" />
+      <workItem from="1511514217817" duration="26047000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121700000" />
+    <option name="totallyTimeSpent" value="121764000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1012,7 +1013,7 @@
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="880">
-          <caret line="28" column="55" lean-forward="true" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
+          <caret line="28" column="55" lean-forward="false" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
           <folding />
         </state>
       </provider>
@@ -1035,18 +1036,14 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/dk/binfo/controllers/ApartmentController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="617">
-          <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+          <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1511787373127" expanded="true" signature="3864:4022" ph="{...}" />
+            <marker date="1511787373127" expanded="true" signature="4174:4712" ph="{...}" />
+            <marker date="1511787373127" expanded="true" signature="4933:5653" ph="{...}" />
+            <marker date="1511787373127" expanded="true" signature="5805:5983" ph="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/binfo/controllers/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="67" column="5" lean-forward="false" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1074,10 +1071,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2240">
           <caret line="70" column="21" lean-forward="false" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="21" />
-          <folding>
-            <element signature="e#4156#4157#0" expanded="true" />
-            <element signature="e#4201#4202#0" expanded="true" />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/binfo/controllers/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="90" column="5" lean-forward="false" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
