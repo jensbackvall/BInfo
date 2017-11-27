@@ -60,14 +60,26 @@ public class LoginController {
 	}
 
 	@RequestMapping(value={"/admin/home", "/admin"}, method = RequestMethod.GET) //TODO Vælg om der skal være /admin også
-	public ModelAndView home(){
+	public ModelAndView adminHome(){
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
 		modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
 		modelAndView.addObject("userEmail", user.getEmail());
-		modelAndView.addObject("adminMessage","Fedt man spa du er admin");
+		modelAndView.addObject("adminMessage","Fedt man spadmin");
 		modelAndView.setViewName("admin/home");
+		return modelAndView;
+	}
+
+	@RequestMapping(value={"/user/home", "/user"}, method = RequestMethod.GET) //TODO Vælg om der skal være /user også
+	public ModelAndView userHome(){
+		ModelAndView modelAndView = new ModelAndView();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userService.findUserByEmail(auth.getName());
+		modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
+		modelAndView.addObject("userEmail", user.getEmail());
+		modelAndView.addObject("userMessage","Du er logget ind");
+		modelAndView.setViewName("user/home");
 		return modelAndView;
 	}
 	

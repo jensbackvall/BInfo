@@ -38,6 +38,7 @@ public class ApartmentController {
         modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
         modelAndView.addObject("userEmail", user.getEmail() + "");
         modelAndView.addObject("adminMessage","Du er logget ind som spadmin");
+        modelAndView.addObject("userMessage","U R USER");
         modelAndView.setViewName("admin/apartment");
 
         return modelAndView;
@@ -73,7 +74,8 @@ public class ApartmentController {
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
         modelAndView.addObject("userEmail", user.getEmail());
-        modelAndView.addObject("adminMessage","Du er logget ind som spadmin");
+        modelAndView.addObject("adminMessage","Fedt man spa du er admin");
+        modelAndView.addObject("userMessage","U R USER");
         modelAndView.addObject("apartment", new Apartment());
         modelAndView.setViewName("/admin/apartment/add");
         return modelAndView;
