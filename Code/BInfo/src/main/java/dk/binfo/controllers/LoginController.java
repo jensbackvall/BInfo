@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import dk.binfo.models.User;
 import dk.binfo.services.UserService;
+import sun.awt.ModalExclude;
 
 @Controller
 public class LoginController {
@@ -22,6 +23,13 @@ public class LoginController {
 	public ModelAndView login(){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("login");
+		return modelAndView;
+	}
+
+	@RequestMapping(value = {"/accessDenied"}, method = RequestMethod.GET)
+	public ModelAndView accessDenied() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/accessDenied");
 		return modelAndView;
 	}
 
@@ -59,19 +67,7 @@ public class LoginController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value={"/admin/home", "/admin"}, method = RequestMethod.GET) //TODO Vælg om der skal være /admin også
-	public ModelAndView adminHome(){
-		ModelAndView modelAndView = new ModelAndView();
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		User user = userService.findUserByEmail(auth.getName());
-		modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
-		modelAndView.addObject("userEmail", user.getEmail());
-		modelAndView.addObject("adminMessage","Fedt man spadmin");
-		modelAndView.setViewName("admin/home");
-		return modelAndView;
-	}
-
-	@RequestMapping(value={"/user/home", "/user"}, method = RequestMethod.GET) //TODO Vælg om der skal være /user også
+	@RequestMapping(value= "/home", method = RequestMethod.GET) //TODO Vælg om der skal være /user også
 	public ModelAndView userHome(){
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -79,11 +75,11 @@ public class LoginController {
 		modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
 		modelAndView.addObject("userEmail", user.getEmail());
 		modelAndView.addObject("userMessage","Du er logget ind");
-		modelAndView.setViewName("user/home");
+		modelAndView.setViewName("/home");
 		return modelAndView;
 	}
 	
-		@RequestMapping(value={"/admin/settings"}, method = RequestMethod.GET)
+	@RequestMapping(value={"/admin/settings"}, method = RequestMethod.GET)
 	public ModelAndView adminSettings(){
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
