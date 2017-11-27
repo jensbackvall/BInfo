@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import dk.binfo.models.User;
 import dk.binfo.services.UserService;
+import sun.awt.ModalExclude;
 
 @Controller
 public class LoginController {
@@ -22,6 +23,13 @@ public class LoginController {
 	public ModelAndView login(){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("login");
+		return modelAndView;
+	}
+
+	@RequestMapping(value = {"/accessDenied"}, method = RequestMethod.GET)
+	public ModelAndView accessDenied() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/accessDenied");
 		return modelAndView;
 	}
 
@@ -56,18 +64,6 @@ public class LoginController {
 			modelAndView.addObject("user", new User());
 			modelAndView.setViewName("registration");
 		}
-		return modelAndView;
-	}
-
-	@RequestMapping(value={"/admin/home", "/admin"}, method = RequestMethod.GET) //TODO Vælg om der skal være /admin også
-	public ModelAndView home(){
-		ModelAndView modelAndView = new ModelAndView();
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		User user = userService.findUserByEmail(auth.getName());
-		modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
-		modelAndView.addObject("userEmail", user.getEmail());
-		modelAndView.addObject("adminMessage","Fedt man spa du er admin");
-		modelAndView.setViewName("admin/home");
 		return modelAndView;
 	}
 	

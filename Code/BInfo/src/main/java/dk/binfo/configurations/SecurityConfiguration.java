@@ -10,7 +10,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
+import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.templateresolver.ITemplateResolver;
 
 @Configuration
 @EnableWebSecurity
@@ -65,7 +69,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 				.logoutSuccessUrl("/").and().exceptionHandling()
-				.accessDeniedPage("/access-denied");
+				.accessDeniedPage("/accessDenied").accessDeniedHandler(accessDeniedHandler());
 	}
 	
 	@Override
@@ -77,6 +81,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public BCryptPasswordEncoder passwordEncoder() {
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 		return bCryptPasswordEncoder;
+	}
+
+	@Bean
+	public AccessDeniedHandler accessDeniedHandler(){
+		return new CustomAccessDeniedHandler();
+	}
+
+	@Bean
+	public SpringTemplateEngine templateEngine(ITemplateResolver templateResolver, SpringSecurityDialect sec) {
+		final SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+		templateEngine.setTemplateResolver(templateResolver);
+		templateEngine.addDialect(sec); // Enable use of "sec"
+		return templateEngine;
 	}
 
 }
