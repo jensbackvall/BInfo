@@ -33,7 +33,7 @@ public class Apartment {
   //  @NotNull(message = "*Du mangler lejlighedens etage")
     private Integer floor;
     @Column(name = "floors")
- //   @NotNull(message = "*Du mangler lejlighedens HVADA FUCK SKRIVER MAN HER")
+ //   @NotNull(message = "*Du mangler at angive antal etager i lejligheden")
     private Integer floors;
 
     public int getId() {
