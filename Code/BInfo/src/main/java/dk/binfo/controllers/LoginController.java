@@ -46,13 +46,13 @@ public class LoginController {
 		ModelAndView modelAndView = new ModelAndView();
 		User userExists = userService.findUserByEmail(user.getEmail());
 		if (userExists != null) {
-			bindingResult.rejectValue("email", "error.user", "There is already a user registered with the email provided"); //TODO ændre til dansk
+			bindingResult.rejectValue("email", "error.user", "Der eksisterer allerede en bruger med den angivne email");
 		}
 		if (bindingResult.hasErrors()) {
 			modelAndView.setViewName("registration");
 		} else {
 			userService.saveUser(user);
-			modelAndView.addObject("successMessage", "User has been registered successfully"); //TODO ændre til dansk
+			modelAndView.addObject("successMessage", "SUCCES!: Du har tilføjet en ny bruger.");
 			modelAndView.addObject("user", new User());
 			modelAndView.setViewName("registration");
 		}
@@ -70,4 +70,16 @@ public class LoginController {
 		modelAndView.setViewName("admin/home");
 		return modelAndView;
 	}
+	
+		@RequestMapping(value={"/admin/settings"}, method = RequestMethod.GET)
+	public ModelAndView adminSettings(){
+		ModelAndView modelAndView = new ModelAndView();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userService.findUserByEmail(auth.getName());
+		modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
+		modelAndView.addObject("userEmail", user.getEmail());
+		modelAndView.setViewName("admin/settings");
+		return modelAndView;
+	}
+	
 }

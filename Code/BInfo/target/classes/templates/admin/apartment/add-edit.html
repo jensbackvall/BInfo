@@ -33,7 +33,7 @@ xmlns:th="http://www.thymeleaf.org">
 				</div>
 				<!-- /.box-header -->
 				<!-- form start -->
-				<form class="form-horizontal" id="form-horizontal" autocomplete="off" th:action="@{'/admin/edit/' + ${apartment.id}}" th:object="${apartment}" method="post" role="form">
+				<form class="form-horizontal" id="form-horizontal" autocomplete="off" th:action="@{'/admin/apartment/edit/' + ${apartment.id}}" th:object="${apartment}" method="post" role="form">
 					<div class="box-body">
 						<div class="form-group">
 							<label for="inputAdress" class="col-sm-2 control-label">Vejnavn</label>
@@ -101,7 +101,7 @@ xmlns:th="http://www.thymeleaf.org">
 					<!-- /.box-body -->
 					<div class="box-footer">
 						<button type="reset" class="btn btn-default"><a onclick="return confirm('Er du sikker?')">Reset</a></button>
-						<button type="Edit"  value ="Edit" class="btn btn-info pull-right"><a onclick="return confirm('Er du sikker?')">Tilføj</a></button>
+						<button type="Edit"  value ="Edit" class="btn btn-info pull-right"><a onclick="return confirm('Er du sikker?')">Tilføj</a></button> // TODO Hvis vi fortsat skal have denn pop-up, så skal værdien for de felter som er ændret vises i den.
 					</div>
 					<!-- /.box-footer -->
 				</form>
