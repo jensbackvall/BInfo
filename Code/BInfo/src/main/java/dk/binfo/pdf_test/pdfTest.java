@@ -8,9 +8,21 @@ import java.util.*;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
+import dk.binfo.models.User;
+import dk.binfo.repositories.UserRepository;
+import dk.binfo.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 public class pdfTest {
+
+    private static String[] emailList = {"admin@test.dk", "user@test.dk",
+            "test@test.dk", "vagabonden@outlook.com", "mortenersej@duerser.dk"};
+
+    @Autowired
+    private static UserService userService;
+    @Autowired
+    private static UserRepository userRepository;
 
     private static String filePath = "/Users/jensbackvall/Desktop/KEAsem2/BInfo/PDF_TEST/BINFO_TEST.pdf";
 
@@ -35,12 +47,15 @@ public class pdfTest {
 
             theList.add(h);
 
-            for (int i = 0; i < 10; i++) {
+
+            for (int i = 0; i < emailList.length; i++) {
+                System.out.println("Finding info for user with email: " + emailList[i]);
+                User listUser = userRepository.findByEmail(emailList[i]);
                 Paragraph p = new Paragraph();
-                Chunk seniority = new Chunk("Ancienittet: " + i + "\n", theFont);
-                Chunk name = new Chunk("Navn: " + i + "\n", theSmallFont);
-                Chunk phoneNumber = new Chunk("Telefonnummer: " + i + "\n", theSmallFont);
-                Chunk email = new Chunk("E-mail: " + i + "\n", theSmallFont);
+                Chunk seniority = new Chunk("\nAncienittet: " + (i + 1) + "\n", theFont);
+                Chunk name = new Chunk("Navn: " + listUser.getName() + " " + listUser.getLastName() + "\n", theSmallFont);
+                Chunk phoneNumber = new Chunk("Telefonnummer: " + listUser.getPhoneNumber() + "\n", theSmallFont);
+                Chunk email = new Chunk("E-mail: " + listUser.getEmail() + "\n", theSmallFont);
                 p.add(seniority);
                 p.add(name);
                 p.add(phoneNumber);
