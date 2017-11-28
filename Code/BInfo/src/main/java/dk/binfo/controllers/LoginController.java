@@ -72,8 +72,7 @@ public class LoginController {
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
-		modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
-		modelAndView.addObject("userEmail", user.getEmail());
+		modelAndView.addObject(user);
 		modelAndView.addObject("userMessage","Du er logget ind");
 		modelAndView.setViewName("/home");
 		return modelAndView;
@@ -84,8 +83,7 @@ public class LoginController {
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
-		modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
-		modelAndView.addObject("userEmail", user.getEmail());
+		modelAndView.addObject(user);
 		modelAndView.setViewName("/settings");
 		return modelAndView;
 	}
