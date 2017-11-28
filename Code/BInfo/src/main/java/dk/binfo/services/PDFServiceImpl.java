@@ -1,4 +1,4 @@
-package dk.binfo.pdf_test;
+package dk.binfo.services;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -12,29 +12,26 @@ import dk.binfo.models.User;
 import dk.binfo.repositories.UserRepository;
 import dk.binfo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-
-public class pdfTest {
+@Service("PDFService")
+public class PDFServiceImpl {
 
     private static String[] emailList = {"admin@test.dk", "user@test.dk",
             "test@test.dk", "vagabonden@outlook.com", "mortenersej@duerser.dk"};
 
-    @Autowired
-    private static UserService userService;
-    @Autowired
-    private static UserRepository userRepository;
 
-    private static String filePath = "/Users/jensbackvall/Desktop/KEAsem2/BInfo/PDF_TEST/BINFO_TEST.pdf";
+    private static UserService userService; // TODO Er i tvivl om hvor vidt vi skal bruge userService
+
+    private static UserRepository userRepository; // TODO eller hvis vi skal bruge userRepository
+
+    private static String filePath = "/Users/jensbackvall/Desktop/KEAsem2/BInfo/PDF_TEST/BINFO_TEST.pdf"; // TODO lave en funktion, hvor admin kan vælge placering for PDF
 
     private static Font theFont = new Font(Font.FontFamily.TIMES_ROMAN, 16, Font.BOLD);
     private static Font theSmallFont = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
 
 
-    public static void main(String[] args) {
-        generatePDF();
-    }
-
-    public static void generatePDF() {
+    public void generatePDF() {
 
         Document theList = new Document();
 
