@@ -113,8 +113,8 @@ public class Waitinglist {
 		return null;
 	}
 	
-
 	public ArrayList<String> checkPriority(int length,ArrayList<String> emails,int ApartmentId){
+
 
 				ArrayList<String> emailssorted = getNeighbourEmails(ApartmentId);
 				try {
@@ -185,4 +185,24 @@ public class Waitinglist {
 		return emailssorted;
 	}
 
+	public ArrayList<String> getSingleWaitinglist(int length,int priority){
+		if (priority>4||priority<1){
+			return null;
+		}
+		ArrayList<String> emailssorted = new ArrayList<String>();
+		try {
+			PreparedStatement sql = jdbcTemplate.getDataSource().getConnection().prepareStatement("SELECT email FROM `list_and_ancienittet` WHERE list_priority="+priority+" ORDER BY seniority ASC;");
+			ResultSet result = sql.executeQuery();
+			while (result.next()){
+				String email = result.getString("email");
+				emailssorted.add(email);
+			}
+			sql.close();
+			result.close();
+			return emailssorted;
+		} catch (Exception e){
+				e.printStackTrace();
+		}
+		return emailssorted;
+	}
 }
