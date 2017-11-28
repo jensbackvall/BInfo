@@ -72,21 +72,19 @@ public class LoginController {
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
-		modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
-		modelAndView.addObject("userEmail", user.getEmail());
+		modelAndView.addObject(user);
 		modelAndView.addObject("userMessage","Du er logget ind");
 		modelAndView.setViewName("/home");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value={"/admin/settings"}, method = RequestMethod.GET)
-	public ModelAndView adminSettings(){
+	@RequestMapping(value={"/settings"}, method = RequestMethod.GET)
+	public ModelAndView settings(){
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
-		modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
-		modelAndView.addObject("userEmail", user.getEmail());
-		modelAndView.setViewName("admin/settings");
+		modelAndView.addObject(user);
+		modelAndView.setViewName("/settings");
 		return modelAndView;
 	}
 	
