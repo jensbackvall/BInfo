@@ -31,6 +31,12 @@ public class PDFServiceImpl {
     private static Font theSmallFont = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
 
 
+    // Kan vi bruge denne funktion til at hente et sted hvor PDF skal gemmes, eller skal det gøres på en ande måde?
+    public String generateFilePath(String filePath) {
+        return filePath;
+    }
+
+
     public void generatePDF() {
 
         Document theList = new Document();
@@ -67,7 +73,7 @@ public class PDFServiceImpl {
 
             theList.close();
 
-            System.out.println("PDF GENERATED!");
+            System.out.println("LIST PDF GENERATED!");
 
         } catch (FileNotFoundException | DocumentException e) {
             e.printStackTrace();
