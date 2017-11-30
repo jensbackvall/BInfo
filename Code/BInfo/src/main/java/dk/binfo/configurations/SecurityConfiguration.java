@@ -69,13 +69,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.and().rememberMe().key("rem-me-key").rememberMeParameter("remember-me").rememberMeCookieName("remember-me") // TODO Check om der er sikkershedsproblemer
 				.and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/").and().exceptionHandling()
-				.accessDeniedPage("/accessDenied").accessDeniedHandler(accessDeniedHandler());
+				.logoutSuccessUrl("/")
+				.and().exceptionHandling().accessDeniedHandler(accessDeniedHandler());
 	}
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-	    web.ignoring().antMatchers("/resources/**", "/static/**", "/fonts/**", "/bootstrap/**","/css/**", "/js/**", "/img/**");
+	    web.ignoring().antMatchers("/resources/**", "/static/**", "/fonts/**", "/css/**", "/js/**", "/img/**");
 	}
 	
 	@Bean

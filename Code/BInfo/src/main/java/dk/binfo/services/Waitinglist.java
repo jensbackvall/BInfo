@@ -8,6 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+/**
+ * A service we can use to make a waitinglist
+ * the waitinglist generated can be based on
+ * a priority or an apartment
+ *
+ * The waitinglist length can also be based on a
+ * specific length input
+ *
+ * @author 		Stonie
+ */
 @Service("waitinglist")
 public class Waitinglist {
 	
@@ -18,11 +28,33 @@ public class Waitinglist {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-	
+	/**
+	 * The main method, used to get an Arraylist
+	 * containing sorted results based on both
+	 * length and ApartmentId.
+	 * <p>
+	 * It uses almost all methods in the class to
+	 * do this in the most optimized way.
+	 *
+	 * @param  		length The length of the waitinglist to be generated
+	 * @param  		ApartmentId The id of the apartment
+	 * @return      ArrayList containing emails on the waitinglist
+	 * @author 		Stonie
+	 */
 	public ArrayList<String> getWaitinglist(int length,int ApartmentId){
 		return checkPriority(length,getPreferences(length,ApartmentId),ApartmentId);
 	}
 
+	/**
+	 * Returns the emails of neighbours of the ApartmentId
+	 * using sql to get the apartments around the apartment
+	 * and then uses sql again to get the emails of said
+	 * apartments.
+	 *
+	 * @param  		ApartmentId The id of the apartment
+	 * @return      ArrayList containing emails of neighbours
+	 * @author 		Stonie
+	 */
 	public ArrayList<String> getNeighbourEmails(int ApartmentId){
 		ArrayList<Integer> neighboursID = new ArrayList<Integer>();
 		try {
@@ -57,7 +89,7 @@ public class Waitinglist {
 
 		ArrayList<String> emailssorted = new ArrayList<String>();
 			try {
-				String SQLString = "SELECT email FROM `list_and_ancienittet` WHERE email=?";
+				String SQLString = "SELECT email FROM `list_and_seniority` WHERE email=?";
 				for (int i = 1;i>=emailsunsorted.size();i++){
 					SQLString += " OR email=?";
 				}
@@ -118,7 +150,7 @@ public class Waitinglist {
 
 				ArrayList<String> emailssorted = getNeighbourEmails(ApartmentId);
 				try {
-					String SQLString = "SELECT email FROM `list_and_ancienittet` WHERE email=?";
+					String SQLString = "SELECT email FROM `list_and_seniority` WHERE email=?";
 					for (int i = 1;i>=emails.size();i++){
 						SQLString += " OR email=?";
 					}
@@ -139,7 +171,7 @@ public class Waitinglist {
 					e.printStackTrace();
 				}
 		try {
-			String SQLString = "SELECT email FROM `list_and_ancienittet` WHERE email=?";
+			String SQLString = "SELECT email FROM `list_and_seniority` WHERE email=?";
 			for (int i = 1;i>=emails.size();i++){
 				SQLString += " OR email=?";
 			}
@@ -160,7 +192,7 @@ public class Waitinglist {
 			e.printStackTrace();
 		}
 		try {
-			String SQLString = "SELECT email FROM `list_and_ancienittet` WHERE email=?";
+			String SQLString = "SELECT email FROM `list_and_seniority` WHERE email=?";
 			for (int i = 1;i>=emails.size();i++){
 				SQLString += " OR email=?";
 			}
@@ -191,7 +223,7 @@ public class Waitinglist {
 		}
 		ArrayList<String> emailssorted = new ArrayList<String>();
 		try {
-			PreparedStatement sql = jdbcTemplate.getDataSource().getConnection().prepareStatement("SELECT email FROM `list_and_ancienittet` WHERE list_priority="+priority+" ORDER BY seniority ASC;");
+			PreparedStatement sql = jdbcTemplate.getDataSource().getConnection().prepareStatement("SELECT email FROM `list_and_seniority` WHERE list_priority="+priority+" ORDER BY seniority ASC;");
 			ResultSet result = sql.executeQuery();
 			while (result.next()){
 				String email = result.getString("email");
