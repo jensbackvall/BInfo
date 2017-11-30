@@ -8,6 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+/**
+ * A service we can use to make a waitinglist
+ * the waitinglist generated can be based on
+ * a priority or an apartment
+ *
+ * The waitinglist length can also be based on a
+ * specific length input
+ *
+ * @author 		Stonie
+ */
 @Service("waitinglist")
 public class Waitinglist {
 	
@@ -18,7 +28,19 @@ public class Waitinglist {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-	
+	/**
+	 * The main method, used to get an Arraylist
+	 * containing sorted results based on both
+	 * length and ApartmentId.
+	 *
+	 * It uses almost all methods in the class to
+	 * do this in the most optimized way.
+	 *
+	 * @param  		length The length of the waitinglist to be generated
+	 * @param  		ApartmentId The id of the apartment
+	 * @return      ArrayList containing emails on the waitinglist
+	 * @author 		Stonie
+	 */
 	public ArrayList<String> getWaitinglist(int length,int ApartmentId){
 		return checkPriority(length,getPreferences(length,ApartmentId),ApartmentId);
 	}
@@ -29,8 +51,9 @@ public class Waitinglist {
 	 * and then uses sql again to get the emails of said
 	 * apartments.
 	 *
-	 * @param  		ApartmentId the location of the image, relative to the url argument
+	 * @param  		ApartmentId The id of the apartment
 	 * @return      ArrayList containing emails of neighbours
+	 * @author 		Stonie
 	 */
 	public ArrayList<String> getNeighbourEmails(int ApartmentId){
 		ArrayList<Integer> neighboursID = new ArrayList<Integer>();

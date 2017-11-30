@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5bcbd96-205f-42bb-80e0-611ceb0c7054" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/dk/binfo/pdf_test/pdfTest.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dk/binfo/services/Waitinglist.java" afterPath="$PROJECT_DIR$/src/main/java/dk/binfo/services/Waitinglist.java" />
     </list>
@@ -18,17 +19,17 @@
       <file leaf-file-name="Waitinglist.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/dk/binfo/services/Waitinglist.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="29" column="18" lean-forward="false" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+            <state relative-caret-position="-221">
+              <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
               <folding>
-                <marker date="1512038309116" expanded="true" signature="1209:1274" ph="SELECT neigh... apartment_neighbours" />
-                <marker date="1512038309116" expanded="true" signature="1756:1801" ph="SELECT email... user" />
-                <marker date="1512038309116" expanded="true" signature="2182:2234" ph="SELECT email... list_and_ancienittet" />
-                <marker date="1512038309116" expanded="true" signature="3138:3195" ph="SELECT email... user_preferences" />
-                <marker date="1512038309116" expanded="true" signature="3911:3963" ph="SELECT email... list_and_ancienittet" />
-                <marker date="1512038309116" expanded="true" signature="4626:4678" ph="SELECT email... list_and_ancienittet" />
-                <marker date="1512038309116" expanded="true" signature="5303:5355" ph="SELECT email... list_and_ancienittet" />
-                <marker date="1512038309116" expanded="true" signature="6338:6432" ph="SELECT email... list_and_ancienittet" />
+                <marker date="1512040349437" expanded="true" signature="1849:1914" ph="SELECT neigh... apartment_neighbours" />
+                <marker date="1512040349437" expanded="true" signature="2396:2441" ph="SELECT email... user" />
+                <marker date="1512040349437" expanded="true" signature="2822:2874" ph="SELECT email... list_and_ancienittet" />
+                <marker date="1512040349437" expanded="true" signature="3778:3835" ph="SELECT email... user_preferences" />
+                <marker date="1512040349437" expanded="true" signature="4551:4603" ph="SELECT email... list_and_ancienittet" />
+                <marker date="1512040349437" expanded="true" signature="5266:5318" ph="SELECT email... list_and_ancienittet" />
+                <marker date="1512040349437" expanded="true" signature="5943:5995" ph="SELECT email... list_and_ancienittet" />
+                <marker date="1512040349437" expanded="true" signature="6978:7072" ph="SELECT email... list_and_ancienittet" />
               </folding>
             </state>
           </provider>
@@ -117,7 +118,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-4" />
     <option name="width" value="1386" />
     <option name="height" value="788" />
@@ -314,15 +315,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1512034828734</updated>
-      <workItem from="1512034830081" duration="3477000" />
+      <workItem from="1512034830081" duration="5061000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3477000" />
+    <option name="totallyTimeSpent" value="5061000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -417,17 +418,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dk/binfo/services/Waitinglist.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="29" column="18" lean-forward="false" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+        <state relative-caret-position="-221">
+          <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
           <folding>
-            <marker date="1512038309116" expanded="true" signature="1209:1274" ph="SELECT neigh... apartment_neighbours" />
-            <marker date="1512038309116" expanded="true" signature="1756:1801" ph="SELECT email... user" />
-            <marker date="1512038309116" expanded="true" signature="2182:2234" ph="SELECT email... list_and_ancienittet" />
-            <marker date="1512038309116" expanded="true" signature="3138:3195" ph="SELECT email... user_preferences" />
-            <marker date="1512038309116" expanded="true" signature="3911:3963" ph="SELECT email... list_and_ancienittet" />
-            <marker date="1512038309116" expanded="true" signature="4626:4678" ph="SELECT email... list_and_ancienittet" />
-            <marker date="1512038309116" expanded="true" signature="5303:5355" ph="SELECT email... list_and_ancienittet" />
-            <marker date="1512038309116" expanded="true" signature="6338:6432" ph="SELECT email... list_and_ancienittet" />
+            <marker date="1512040349437" expanded="true" signature="1849:1914" ph="SELECT neigh... apartment_neighbours" />
+            <marker date="1512040349437" expanded="true" signature="2396:2441" ph="SELECT email... user" />
+            <marker date="1512040349437" expanded="true" signature="2822:2874" ph="SELECT email... list_and_ancienittet" />
+            <marker date="1512040349437" expanded="true" signature="3778:3835" ph="SELECT email... user_preferences" />
+            <marker date="1512040349437" expanded="true" signature="4551:4603" ph="SELECT email... list_and_ancienittet" />
+            <marker date="1512040349437" expanded="true" signature="5266:5318" ph="SELECT email... list_and_ancienittet" />
+            <marker date="1512040349437" expanded="true" signature="5943:5995" ph="SELECT email... list_and_ancienittet" />
+            <marker date="1512040349437" expanded="true" signature="6978:7072" ph="SELECT email... list_and_ancienittet" />
           </folding>
         </state>
       </provider>
