@@ -22,7 +22,8 @@ public class Waitinglist {
 	public ArrayList<String> getWaitinglist(int length,int ApartmentId){
 		return checkPriority(length,getPreferences(length,ApartmentId),ApartmentId);
 	}
-
+//test
+	//test2
 	public ArrayList<String> getNeighbourEmails(int ApartmentId){
 		ArrayList<Integer> neighboursID = new ArrayList<Integer>();
 		try {
