@@ -32,7 +32,7 @@ public class Waitinglist {
 	 * The main method, used to get an Arraylist
 	 * containing sorted results based on both
 	 * length and ApartmentId.
-	 *
+	 * <p>
 	 * It uses almost all methods in the class to
 	 * do this in the most optimized way.
 	 *
