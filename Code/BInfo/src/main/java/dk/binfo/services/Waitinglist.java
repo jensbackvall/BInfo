@@ -22,8 +22,16 @@ public class Waitinglist {
 	public ArrayList<String> getWaitinglist(int length,int ApartmentId){
 		return checkPriority(length,getPreferences(length,ApartmentId),ApartmentId);
 	}
-//test
-	//test2
+
+	/**
+	 * Returns the emails of neighbours of the ApartmentId
+	 * using sql to get the apartments around the apartment
+	 * and then uses sql again to get the emails of said
+	 * apartments.
+	 *
+	 * @param  		ApartmentId the location of the image, relative to the url argument
+	 * @return      ArrayList containing emails of neighbours
+	 */
 	public ArrayList<String> getNeighbourEmails(int ApartmentId){
 		ArrayList<Integer> neighboursID = new ArrayList<Integer>();
 		try {
@@ -58,7 +66,7 @@ public class Waitinglist {
 
 		ArrayList<String> emailssorted = new ArrayList<String>();
 			try {
-				String SQLString = "SELECT email FROM `list_and_ancienittet` WHERE email=?";
+				String SQLString = "SELECT email FROM `list_and_seniority` WHERE email=?";
 				for (int i = 1;i>=emailsunsorted.size();i++){
 					SQLString += " OR email=?";
 				}
@@ -119,7 +127,7 @@ public class Waitinglist {
 
 				ArrayList<String> emailssorted = getNeighbourEmails(ApartmentId);
 				try {
-					String SQLString = "SELECT email FROM `list_and_ancienittet` WHERE email=?";
+					String SQLString = "SELECT email FROM `list_and_seniority` WHERE email=?";
 					for (int i = 1;i>=emails.size();i++){
 						SQLString += " OR email=?";
 					}
@@ -140,7 +148,7 @@ public class Waitinglist {
 					e.printStackTrace();
 				}
 		try {
-			String SQLString = "SELECT email FROM `list_and_ancienittet` WHERE email=?";
+			String SQLString = "SELECT email FROM `list_and_seniority` WHERE email=?";
 			for (int i = 1;i>=emails.size();i++){
 				SQLString += " OR email=?";
 			}
@@ -161,7 +169,7 @@ public class Waitinglist {
 			e.printStackTrace();
 		}
 		try {
-			String SQLString = "SELECT email FROM `list_and_ancienittet` WHERE email=?";
+			String SQLString = "SELECT email FROM `list_and_seniority` WHERE email=?";
 			for (int i = 1;i>=emails.size();i++){
 				SQLString += " OR email=?";
 			}
@@ -192,7 +200,7 @@ public class Waitinglist {
 		}
 		ArrayList<String> emailssorted = new ArrayList<String>();
 		try {
-			PreparedStatement sql = jdbcTemplate.getDataSource().getConnection().prepareStatement("SELECT email FROM `list_and_ancienittet` WHERE list_priority="+priority+" ORDER BY seniority ASC;");
+			PreparedStatement sql = jdbcTemplate.getDataSource().getConnection().prepareStatement("SELECT email FROM `list_and_seniority` WHERE list_priority="+priority+" ORDER BY seniority ASC;");
 			ResultSet result = sql.executeQuery();
 			while (result.next()){
 				String email = result.getString("email");
