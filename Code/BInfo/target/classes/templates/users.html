@@ -61,18 +61,17 @@
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-success">Rediger</button>
-                                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Redigering
                                                 <span class="caret"></span>
                                                 <span class="sr-only">Toggle Dropdown</span>
                                             </button>
                                             <ul class="dropdown-menu" role="menu">
-                                                <li><a th:href="@{'users/edit/' + ${users.email}}">Rediger</a></li>
-                                                <li><a th:href="@{'users/delete/' + ${users.email}}" onclick="return confirm('Er du sikker?')">Delete</a></li>
+                                                <li><a th:href="@{'users/edit/' + ${user.email}}">Rediger</a></li>
+                                                <li><a th:href="@{'users/delete/' + ${user.email}}" onclick="return confirm('Er du sikker?')">Slet</a></li>
                                                 </li>
-                                                <li><a href="#">Jeg har ingen ide</a></li>
+                                                <li><a href="http://lmgtfy.com/?q=jeg+har+ingen+ide">Jeg har ingen ide</a></li>
                                                 <li class="divider"></li>
-                                                <li><a href="#">Look at me now</a></li>
+                                                <li><a href="https://www.youtube.com/watch?v=8gyLR4NfMiI">Look at me now</a></li>
                                             </ul>
                                         </div>
                                     </td>
@@ -102,7 +101,6 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-
     <!-- page script -->
     <script>
         $(function () {

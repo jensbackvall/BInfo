@@ -44,6 +44,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/login").permitAll()
 				.antMatchers("/forgotpassword").permitAll()
 				.antMatchers("/apartment/**").hasAuthority("ADMIN")
+				.antMatchers("/users/**").hasAuthority("ADMIN")
 				.antMatchers("/registration").permitAll()
 				.antMatchers("/error").permitAll()
 				// TODO admin skal kunne se alle ventelister (/admin/list/Family/intern/ekstern/connectMrawesomeSexy)

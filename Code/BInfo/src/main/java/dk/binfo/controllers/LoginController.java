@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,14 @@ public class LoginController {
 
 	@Autowired
 	private UserService userService;
+
+	// Countdown
+	@RequestMapping(value={"/"}, method = RequestMethod.GET)
+	public ModelAndView index(){
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("index");
+		return modelAndView;
+	}
 
 	@RequestMapping(value={"/login"}, method = RequestMethod.GET)
 	public ModelAndView login(){
@@ -36,13 +45,6 @@ public class LoginController {
 		return modelAndView;
 	}
 
-	// Countdown
-	@RequestMapping(value={"/"}, method = RequestMethod.GET)
-	public ModelAndView index(){
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("index");
-		return modelAndView;
-	}
 	
 	@RequestMapping(value={"/registration", "/register"}, method = RequestMethod.GET)
 	public ModelAndView registration(){
@@ -75,7 +77,7 @@ public class LoginController {
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
-		modelAndView.addObject(user);
+		modelAndView.addObject("user", user);
 		modelAndView.addObject("userMessage","Du er logget ind");
 		modelAndView.setViewName("/home");
 		return modelAndView;
@@ -86,7 +88,7 @@ public class LoginController {
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
-		modelAndView.addObject(user);
+		modelAndView.addObject("user", user);
 		modelAndView.addObject("userForm",user);
 		modelAndView.setViewName("/settings");
 		return modelAndView;
@@ -97,7 +99,7 @@ public class LoginController {
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
-		modelAndView.addObject(user);
+		modelAndView.addObject("user", user);
 
 		if (bindingResult.hasErrors())
 		{
@@ -107,5 +109,50 @@ public class LoginController {
 		userService.updateUserSettings(userinfo);
 		return modelAndView;
 	}
+
+	@RequestMapping("/users/add")
+	public ModelAndView adminCreateNewUser(){
+		ModelAndView modelAndView = new ModelAndView();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userService.findUserByEmail(auth.getName());
+		modelAndView.addObject("user", user);
+		modelAndView.addObject("users", new User());
+		modelAndView.setViewName("/users/add");
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/users/add", method = RequestMethod.POST)
+	public ModelAndView adminCreateUser(@Valid User users, BindingResult bindingResult) {
+		ModelAndView modelAndView = new ModelAndView();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userService.findUserByEmail(auth.getName());
+		modelAndView.addObject("user", user);
+		User userExists = userService.findUserByEmail(users.getEmail());
+		if (userExists != null) {
+			bindingResult.rejectValue("email", "error.user", "Der eksisterer allerede en bruger med den angivne email");
+		}
+		else {
+			userService.adminSaveUser(users);
+			modelAndView.addObject("successMessage", "SUCCES!: Du har tilføjet en ny bruger.");
+			modelAndView.addObject("users", new User());
+			modelAndView.setViewName("/users/add");
+		}
+		return modelAndView;
+	}
+
+
+	@RequestMapping("/users")
+	public ModelAndView showUsers() {
+		ModelAndView modelAndView = new ModelAndView("/users", "users", userService.findAll());
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userService.findUserByEmail(auth.getName());
+		modelAndView.addObject("user", user);
+		modelAndView.setViewName("/users");
+		return modelAndView;
+	}
+
+	//TODO fuldføre submit
+
+
 	
 }
