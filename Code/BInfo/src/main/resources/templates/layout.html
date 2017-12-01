@@ -84,7 +84,7 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="/settings" class="btn btn-default btn-flat">Indstillinger</a>
+                                <a class="btn btn-default btn-flat" th:href="@{'/settings/' + ${user.email}}">Indstillinger</a>
                             </div>
                             <div class="pull-right">
                                 <a href="/logout" class="btn btn-default btn-flat">Log af</a>
@@ -163,7 +163,7 @@
 <footer class="main-footer" th:fragment="site-footer">
         <!-- To the right -->
         <div class="pull-right hidden-xs">
-            Version 0.09
+            Version 0.1.0
         </div>
         <!-- Default to the left -->
         <strong>Copyright &copy; 2017 <a href="#">BoligInfo</a>.</strong> All rights reserved For Über Alles Mig.
