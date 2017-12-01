@@ -49,6 +49,23 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 	@Override
 	@Transactional
+	public User updateUserSettings(User user){
+		User updateUser = userRepository.findByEmail(user.getEmail());
+		if(!user.getPhoneNumber().equalsIgnoreCase("") && user.getPhoneNumber() != null)
+		{
+			System.out.println(user.getPhoneNumber()); //TODO fjern
+			updateUser.setPhoneNumber(user.getPhoneNumber());
+		}
+		if(!user.getPassword().equalsIgnoreCase("") && user.getPassword() !=null)
+		{
+			System.out.println(user.getPassword()); //TODO fjern
+			updateUser.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+		}
+		return updateUser;
+	}
+
+	@Override
+	@Transactional
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 		User user = userRepository.findByEmail(userName);
 		List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());

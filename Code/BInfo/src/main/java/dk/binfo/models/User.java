@@ -45,13 +45,13 @@ public class User {
 	private Set<Role> roles;
 
 	@Column(name ="phone_number")
-	private Integer phoneNumber;
+	private String phoneNumber;
 
-	public Integer getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(Integer phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
