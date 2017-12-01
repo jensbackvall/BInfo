@@ -44,6 +44,17 @@ public class User {
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
 
+	@Column(name ="phone_number")
+	private Integer phoneNumber;
+
+	public Integer getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(Integer phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
 	public String getPassword() {
 		return password;
 	}
