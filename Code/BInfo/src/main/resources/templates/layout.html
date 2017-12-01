@@ -149,7 +149,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li th:classappend="${#httpServletRequest.getRequestURI() == '/apartment' ? 'active':''}"><a th:href="@{/apartment}"><i class="fa fa-users"></i><span>Lejligheder</span></a></li>
-                    <li th:classappend="${#httpServletRequest.getRequestURI() == '/lists' ? 'active':''}"><a th:href="@{/lists}"><i class="fa fa-users"></i><span>Lister</span></a></li>
+                    <li th:classappend="${#httpServletRequest.getRequestURI() == '/list/internal' ? 'active':''}"><a th:href="@{/list/internal}"><i class="fa fa-users"></i><span>Lister</span></a></li>
                 </ul>
             </li>
         </ul>

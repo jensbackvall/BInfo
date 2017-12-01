@@ -17,8 +17,6 @@ import sun.awt.ModalExclude;
 public class LoginController {
 
 
-
-
 	@Autowired
 	private UserService userService;
 

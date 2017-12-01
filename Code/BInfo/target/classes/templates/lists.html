@@ -32,19 +32,22 @@
                 <div class="col-xs-12">
                     <div class="box box-primary">
                         <!-- Tilpas de nedenstående boxes størrelse, inline -->
-                        <div class="box-header">
-                            <a href="apartment/add" class="btn btn-block btn-success" role="button">Sammenlægningsliste</a>
+                        <!-- OBS. Hver af de fire første knapper skal angive en prioritet 1, 2, 3 eller 4 som vi
+                        kan sende til bage til controlleren for at bestemme hvilken arraylist som brugerne
+                        læses fra-->
+                        <div class="small-box">
+                            <a href="list/connect" class="btn btn-block btn-success" role="button">Sammenlægningsliste</a>
                         </div>
-                        <div class="box-header">
-                            <a href="apartment/add" class="btn btn-block btn-success" role="button">Intern Liste</a>
+                        <div class="small-box">
+                            <a href="list/intern" class="btn btn-block btn-success" role="button">Intern Liste</a>
                         </div>
-                        <div class="box-header">
-                            <a href="apartment/add" class="btn btn-block btn-success" role="button">Familieliste</a>
+                        <div class="small-box">
+                            <a href="list/family" class="btn btn-block btn-success" role="button">Familieliste</a>
                         </div>
-                        <div class="box-header">
-                            <a href="apartment/add" class="btn btn-block btn-success" role="button">Ekstern Liste</a>
+                        <div class="small-box">
+                            <a href="list/external" class="btn btn-block btn-success" role="button">Ekstern Liste</a>
                         </div>
-                        <div class="box-header">
+                        <div class="small-box">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-success">Liste for én lejlighed</button>
                                 <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
@@ -78,11 +81,11 @@
                                 <tbody>
                                 <tr th:each="user, status : ${user}">
                                     <td th:text="${status.count}">1</td>
-                                    <td th:text="${user.email}">Address</td>
-                                    <td th:text="${user.name}">number</td>
-                                    <td th:text="${user.last_name}">size</td>
-                                    <td th:text="${user.phone_number}">floor</td>
-                                    <td th:text="${user.my_apartment}">floors</td>
+                                    <td th:text="${user.email}">Email</td>
+                                    <td th:text="${user.name}">Fornavn</td>
+                                    <td th:text="${user.last_name}">Efternavn</td>
+                                    <td th:text="${user.phone_number}">Telefonnummer</td>
+                                    <td th:text="${user.my_apartment}">Brugers Lejlighed</td>
                                 </tr>
                                 </tbody>
                                 <tfoot>
@@ -113,7 +116,7 @@
     <!-- page script -->
     <script>
         $(function () {
-            $('#example1').DataTable()
+            $('#example1').DataTable();
             $('#example2').DataTable({
                 'paging'      : true,
                 'lengthChange': false,

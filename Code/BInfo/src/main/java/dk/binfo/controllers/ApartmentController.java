@@ -37,7 +37,7 @@ public class ApartmentController {
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject(user);
         modelAndView.addObject("adminMessage","Du er logget ind som spadmin");
-        modelAndView.addObject("userMessage","U R USER");
+        modelAndView.addObject("userMessage","U R USER"); // TODO fjern dette, da det er unødvendigt :-P
         modelAndView.setViewName("/apartment");
 
         return modelAndView;

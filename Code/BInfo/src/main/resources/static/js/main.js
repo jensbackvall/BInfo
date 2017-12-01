@@ -39,7 +39,7 @@ function initializeSite() {
 	// Init effect 
 	$('#scene').parallax();
 
-};
+}
 /* END ------------------------------------------------------- */
 
 /* =Document Ready Trigger

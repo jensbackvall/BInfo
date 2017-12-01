@@ -46,7 +46,7 @@ xmlns:th="http://www.thymeleaf.org">
 						<div class="form-group">
 							<label for="number" class="col-sm-2 control-label">Vejnummer</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="number" th:value="*{number}" th:field="*{number}" required="" type="number" placeholder="Lejligheds nummer" onkeydown="javascript: return event.keyCode == 69 || event.keyCode == 187 || event.keyCode == 188 || event.keyCode == 189 || event.keyCode == 190 	 ? false : true" >
+								<input type="text" class="form-control" id="number" th:value="*{number}" th:field="*{number}" required="" type="number" placeholder="Lejligheds nummer" onkeydown="return event.keyCode == 69 || event.keyCode == 187 || event.keyCode == 188 || event.keyCode == 189 || event.keyCode == 190 	 ? false : true" >
 								<label th:if="${#fields.hasErrors('number')}" th:errors="*{number}" class="validation-message"></label>
 							</div>
 						</div>
@@ -54,7 +54,7 @@ xmlns:th="http://www.thymeleaf.org">
 							<label for="rooms" class="col-sm-2 control-label">Antal rum</label>
 
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="rooms" th:value="*{rooms}" th:field="*{rooms}" type="number" required="" placeholder="Antal rum" onkeydown="javascript: return event.keyCode == 69 || event.keyCode == 187 || event.keyCode == 188 || event.keyCode == 189 || event.keyCode == 190 	 ? false : true">
+								<input type="text" class="form-control" id="rooms" th:value="*{rooms}" th:field="*{rooms}" type="number" required="" placeholder="Antal rum" onkeydown="return event.keyCode == 69 || event.keyCode == 187 || event.keyCode == 188 || event.keyCode == 189 || event.keyCode == 190 	 ? false : true">
 								<label th:if="${#fields.hasErrors('rooms')}" th:errors="*{rooms}" class="validation-message"></label>
 							</div>
 						</div>
@@ -75,7 +75,7 @@ xmlns:th="http://www.thymeleaf.org">
 							<label for="size" class="col-sm-2 control-label">Kvm</label>
 
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="size" th:value="*{size}" th:field="*{size}" type="number" required="" placeholder="Lejligheds størrelse" onkeydown="javascript: return event.keyCode == 69 || event.keyCode == 187 || event.keyCode == 188 || event.keyCode == 189 || event.keyCode == 190 	 ? false : true">
+								<input type="text" class="form-control" id="size" th:value="*{size}" th:field="*{size}" type="number" required="" placeholder="Lejligheds størrelse" onkeydown="return event.keyCode == 69 || event.keyCode == 187 || event.keyCode == 188 || event.keyCode == 189 || event.keyCode == 190 	 ? false : true">
 								<label th:if="${#fields.hasErrors('size')}" th:errors="*{size}" class="validation-message"></label>
 							</div>
 						</div>
@@ -84,7 +84,7 @@ xmlns:th="http://www.thymeleaf.org">
 							<label for="floor" class="col-sm-2 control-label">Etage</label>
 
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="floor" th:value="*{floor}" th:field="*{floor}" type="number" required="" placeholder="Lejligheds etage" onkeydown="javascript: return event.keyCode == 69 || event.keyCode == 187 || event.keyCode == 188 || event.keyCode == 189 || event.keyCode == 190 	 ? false : true">
+								<input type="text" class="form-control" id="floor" th:value="*{floor}" th:field="*{floor}" type="number" required="" placeholder="Lejligheds etage" onkeydown="return event.keyCode == 69 || event.keyCode == 187 || event.keyCode == 188 || event.keyCode == 189 || event.keyCode == 190 	 ? false : true">
 								<label th:if="${#fields.hasErrors('floor')}" th:errors="*{floor}" class="validation-message"></label>
 							</div>
 						</div>
@@ -93,7 +93,7 @@ xmlns:th="http://www.thymeleaf.org">
 							<label for="floors" class="col-sm-2 control-label">Antal etager</label>
 
 							<div class="col-sm-10">
-								<input type="text" class="form-control" id="floors" th:value="*{floors}" th:field="*{floors}" type="number" required="" placeholder="Antal etager" onkeydown="javascript: return event.keyCode == 69 || event.keyCode == 187 || event.keyCode == 188 || event.keyCode == 189 || event.keyCode == 190 	 ? false : true">
+								<input type="text" class="form-control" id="floors" th:value="*{floors}" th:field="*{floors}" type="number" required="" placeholder="Antal etager" onkeydown="return event.keyCode == 69 || event.keyCode == 187 || event.keyCode == 188 || event.keyCode == 189 || event.keyCode == 190 	 ? false : true">
 								<label th:if="${#fields.hasErrors('floors')}" th:errors="*{floors}" class="validation-message"></label>
 							</div>
 						</div>

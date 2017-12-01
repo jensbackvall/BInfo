@@ -59,6 +59,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				// TODO admin skal kunne oprette en ny bruger/se alle brugere og søge/edit (/admin/user/ + HTML)
 				// TODO lav user bruger indstillinger side (/user/settings Controller + HTML) - MORTEN
 				// TODO lav admin bruger indstillinger (/admin/settings Controller + html) - MORTEN
+				// TODO konfigurer databasen med alle lister
+				// TODO test lister funktion
 				.antMatchers("/user/**").hasAuthority("user") //TODO lav en user adminHome side (Controller, html)
 				.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
 				.authenticated().and().csrf().disable().formLogin()
