@@ -20,9 +20,25 @@ import org.springframework.stereotype.Service;
  */
 @Service("waitinglist")
 public class Waitinglist {
-	
+
+	/**
+	 * A pointer we can use to refer to springs JdbcTemplate
+	 * so we can use the same database connection and can avoid
+	 * creating multiple connections that overlap eachother
+	 *
+	 * @author 		Stonie
+	 */
 	private final JdbcTemplate jdbcTemplate;
 
+	/**
+	 * An autowired method that gets the jdbcTemplate
+	 * from spring so we can use the same database
+	 * connection and can avoid creating multiple
+	 * connections that overlap eachother
+	 *
+	 * @param  		jdbcTemplate The length of the waitinglist to be generated
+	 * @author 		Stonie
+	 */
     @Autowired
     public Waitinglist(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -112,7 +128,20 @@ public class Waitinglist {
 			}
 		return null;
 	}
-	
+
+	/**
+	 * Returns the emails on waitinglist for the ApartmentId
+	 * using sql to get them.
+	 * The list will not be sorted.
+	 * <p>
+	 * It will NOT contain the emails from the neighbour
+	 * waitinglist, use the getNeighbourEmails method for that
+	 *
+	 * @param  		length The length of the waitinglist to be generated
+	 * @param  		ApartmentId The id of the apartment
+	 * @return      ArrayList containing emails on the waitinglist
+	 * @author 		Stonie
+	 */
 	public ArrayList<String> getPreferences(int length,int ApartmentId){
 		ArrayList<String> pref = new ArrayList<String>();
 		try {
@@ -144,7 +173,17 @@ public class Waitinglist {
 		
 		return null;
 	}
-	
+
+	/**
+	 * Sorts the emails based on seniority
+	 * and returns the sorted list as an ArrayList
+	 *
+	 * @param  		length The length of the waitinglist to be generated
+	 * @param  		emails An arraylist containing the emails to be sorted
+	 * @param  		ApartmentId The id of the apartment
+	 * @return      ArrayList containing emails sorted by seniority
+	 * @author 		Stonie
+	 */
 	public ArrayList<String> checkPriority(int length,ArrayList<String> emails,int ApartmentId){
 
 
@@ -217,6 +256,16 @@ public class Waitinglist {
 		return emailssorted;
 	}
 
+	/**
+	 * Returns an ArrayList containing all the emails
+	 * on a specific waitinglist based on priority and
+	 * sorted by seniority.
+	 *
+	 * @param  		length The length of the waitinglist to be generated
+	 * @param  		priority the priority of the list to be generated
+	 * @return      ArrayList containing emails on the priority list sorted by seniority
+	 * @author 		Stonie
+	 */
 	public ArrayList<String> getSingleWaitinglist(int length,int priority){
 		if (priority>4||priority<1){
 			return null;
