@@ -19,9 +19,6 @@ import dk.binfo.services.UserService;
 @Controller
 public class LoginController {
 
-
-
-
 	@Autowired
 	private UserService userService;
 
@@ -39,6 +36,7 @@ public class LoginController {
 		modelAndView.setViewName("login");
 		return modelAndView;
 	}
+
 
 	@RequestMapping(value = {"/accessDenied"}, method = RequestMethod.GET)
 	public ModelAndView accessDenied() {
