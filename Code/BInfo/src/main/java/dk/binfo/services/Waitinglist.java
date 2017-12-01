@@ -8,17 +8,55 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+/**
+ * A service we can use to make a waitinglist
+ * the waitinglist generated can be based on
+ * a priority or an apartment
+ *
+ * The waitinglist length can also be based on a
+ * specific length input
+ *
+ * @author 		Stonie
+ */
 @Service("waitinglist")
 public class Waitinglist {
-	
+
+	/**
+	 * A pointer we can use to refer to springs JdbcTemplate
+	 * so we can use the same database connection and can avoid
+	 * creating multiple connections that overlap eachother
+	 *
+	 * @author 		Stonie
+	 */
 	private final JdbcTemplate jdbcTemplate;
 
+	/**
+	 * An autowired method that gets the jdbcTemplate
+	 * from spring so we can use the same database
+	 * connection and can avoid creating multiple
+	 * connections that overlap eachother
+	 *
+	 * @param  		jdbcTemplate The length of the waitinglist to be generated
+	 * @author 		Stonie
+	 */
     @Autowired
     public Waitinglist(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-	
+	/**
+	 * The main method, used to get an Arraylist
+	 * containing sorted results based on both
+	 * length and ApartmentId.
+	 * <p>
+	 * It uses almost all methods in the class to
+	 * do this in the most optimized way.
+	 *
+	 * @param  		length The length of the waitinglist to be generated
+	 * @param  		ApartmentId The id of the apartment
+	 * @return      ArrayList containing emails on the waitinglist
+	 * @author 		Stonie
+	 */
 	public ArrayList<String> getWaitinglist(int length,int ApartmentId){
 		return checkPriority(length,getPreferences(length,ApartmentId),ApartmentId);
 	}
@@ -29,8 +67,9 @@ public class Waitinglist {
 	 * and then uses sql again to get the emails of said
 	 * apartments.
 	 *
-	 * @param  		ApartmentId the location of the image, relative to the url argument
+	 * @param  		ApartmentId The id of the apartment
 	 * @return      ArrayList containing emails of neighbours
+	 * @author 		Stonie
 	 */
 	public ArrayList<String> getNeighbourEmails(int ApartmentId){
 		ArrayList<Integer> neighboursID = new ArrayList<Integer>();
@@ -89,7 +128,20 @@ public class Waitinglist {
 			}
 		return null;
 	}
-	
+
+	/**
+	 * Returns the emails on waitinglist for the ApartmentId
+	 * using sql to get them.
+	 * The list will not be sorted.
+	 * <p>
+	 * It will NOT contain the emails from the neighbour
+	 * waitinglist, use the getNeighbourEmails method for that
+	 *
+	 * @param  		length The length of the waitinglist to be generated
+	 * @param  		ApartmentId The id of the apartment
+	 * @return      ArrayList containing emails on the waitinglist
+	 * @author 		Stonie
+	 */
 	public ArrayList<String> getPreferences(int length,int ApartmentId){
 		ArrayList<String> pref = new ArrayList<String>();
 		try {
@@ -121,7 +173,17 @@ public class Waitinglist {
 		
 		return null;
 	}
-	
+
+	/**
+	 * Sorts the emails based on seniority
+	 * and returns the sorted list as an ArrayList
+	 *
+	 * @param  		length The length of the waitinglist to be generated
+	 * @param  		emails An arraylist containing the emails to be sorted
+	 * @param  		ApartmentId The id of the apartment
+	 * @return      ArrayList containing emails sorted by seniority
+	 * @author 		Stonie
+	 */
 	public ArrayList<String> checkPriority(int length,ArrayList<String> emails,int ApartmentId){
 
 
@@ -194,6 +256,16 @@ public class Waitinglist {
 		return emailssorted;
 	}
 
+	/**
+	 * Returns an ArrayList containing all the emails
+	 * on a specific waitinglist based on priority and
+	 * sorted by seniority.
+	 *
+	 * @param  		length The length of the waitinglist to be generated
+	 * @param  		priority the priority of the list to be generated
+	 * @return      ArrayList containing emails on the priority list sorted by seniority
+	 * @author 		Stonie
+	 */
 	public ArrayList<String> getSingleWaitinglist(int length,int priority){
 		if (priority>4||priority<1){
 			return null;
