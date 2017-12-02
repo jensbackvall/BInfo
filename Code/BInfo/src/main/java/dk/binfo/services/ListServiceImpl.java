@@ -106,7 +106,7 @@ public class ListServiceImpl implements ListService {
 
     /**
      * The generateList method uses the getSingleWaitinglist method
-     * from the waitinglist service to generate a waitinglist for a
+     * from the waitinglist service to generate a waiting list for a
      * certain priority, as described above. It takes in the
      * parameters needed, being the length, or number of users, in
      * the list as well as the priority or type of waiting list.
@@ -129,4 +129,28 @@ public class ListServiceImpl implements ListService {
         return generatedList;
     }
 
+    /**
+     * The generateSingleApartmentList method uses the getWaitinglist method
+     * from the waitinglist service to generate a waiting list for a
+     * certain apartment. It takes in the
+     * parameters needed, being the length, or number of users, in
+     * the list as well as the id of the apartment that is being sold.
+     *
+     * It returns a list of the desired type, for displaying in a
+     * table on screen.
+     *
+     * @param length
+     * @param ApartmentId
+     * @return
+     */
+
+    public List<User> generateSingleApartmentList(int length, int ApartmentId) {
+        List<User> generatedApartmentList = new ArrayList<>();
+        ArrayList<String> emailList = waitinglist.getWaitinglist(Integer.MAX_VALUE, ApartmentId);
+        for (String email: emailList) {
+            User listUser = userService.findUserByEmail(email);
+            generatedApartmentList.add(listUser);
+        }
+        return generatedApartmentList;
+    }
 }

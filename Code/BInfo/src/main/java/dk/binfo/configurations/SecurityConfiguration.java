@@ -62,6 +62,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				// TODO lav user bruger indstillinger side (/user/settings Controller + HTML) - MORTEN - DONE
 				// TODO lav admin bruger indstillinger (/admin/settings Controller + html) - MORTEN - DONE
 				// TODO Lav javadoc på alle classer, methoder og atributer
+				// TODO lav admin bruger indstillinger (/admin/settings Controller + html) - MORTEN - DONE
+				// TODO Lav javadoc på alle classer, methoder og
+				// attributer
 				.antMatchers("/user/**").hasAuthority("user") //TODO lav en user adminHome side (Controller, html)
 				.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
 				.authenticated().and().csrf().disable().formLogin()

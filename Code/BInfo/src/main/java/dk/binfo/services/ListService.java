@@ -14,4 +14,5 @@ import java.util.List;
 public interface ListService {
     void generatePDF(int listLength, int apartmentNumber);
     List<User> generateList(int length, int priority);
+    List<User> generateSingleApartmentList(int length, int ApartmentId);
 }

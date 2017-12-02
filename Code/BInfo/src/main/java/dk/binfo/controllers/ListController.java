@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,7 +24,8 @@ public class ListController {
 
     @RequestMapping(value={"/list/connect"})
     public ModelAndView showConnectList() {
-        ModelAndView modelAndView = new ModelAndView("/list/connect", "lists", listService.generateList(Integer.MAX_VALUE, 1));
+        ModelAndView modelAndView = new ModelAndView("/lists", "lists", listService.generateList
+                (Integer.MAX_VALUE, 1));
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject(user);
@@ -32,14 +34,15 @@ public class ListController {
         return modelAndView;
     }
 
-    @RequestMapping(value={"/list/internal"})
+    @RequestMapping(value={"/lists/internal"})
     public ModelAndView showInternList() {
-        ModelAndView modelAndView = new ModelAndView("/list/internal", "lists", listService.generateList(Integer.MAX_VALUE, 2));
+        ModelAndView modelAndView = new ModelAndView("/lists/internal", "lists", listService
+                .generateList(Integer.MAX_VALUE, 2));
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject(user);
         modelAndView.addObject("adminMessage","Du er logget ind som spadmin");
-        modelAndView.setViewName("/list/internal");
+        modelAndView.setViewName("/lists/internal");
         return modelAndView;
     }
 
@@ -62,6 +65,18 @@ public class ListController {
         modelAndView.addObject(user);
         modelAndView.addObject("adminMessage","Du er logget ind som spadmin");
         modelAndView.setViewName("/list/external");
+        return modelAndView;
+    }
+
+    @RequestMapping(value={"/list/apartment#/{id}"})
+    public ModelAndView showSingleApartmentList(@PathVariable Integer id) {
+        ModelAndView modelAndView = new ModelAndView("/list/apartment#/{id}", "lists",
+                listService.generateSingleApartmentList(Integer.MAX_VALUE, id));
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject(user);
+        modelAndView.addObject("adminMessage","Du er logget ind som spadmin");
+        modelAndView.setViewName("/list/apartment#/{id}");
         return modelAndView;
     }
 
