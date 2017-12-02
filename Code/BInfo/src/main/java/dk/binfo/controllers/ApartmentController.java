@@ -35,7 +35,7 @@ public class ApartmentController {
         ModelAndView modelAndView = new ModelAndView("/apartment", "apartment", repository.findAll());
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-        modelAndView.addObject(user);
+        modelAndView.addObject("user", user);
         modelAndView.addObject("adminMessage","Du er logget ind som spadmin");
         modelAndView.addObject("userMessage","U R USER"); // TODO fjern dette, da det er unødvendigt :-P
         modelAndView.setViewName("/apartment");
@@ -57,7 +57,7 @@ public class ApartmentController {
         } else {
             apartmentService.saveApartment(apartment);
             modelAndView.addObject("successMessage", "Fantastisk arbejde! Du har nu tilføjet en ny lejlighed. Du ROCKER!!!");
-            modelAndView.addObject(user);
+            modelAndView.addObject("user", user);
             modelAndView.addObject("apartment", new Apartment());
             modelAndView.setViewName("/apartment/add");
 
@@ -70,7 +70,7 @@ public class ApartmentController {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-        modelAndView.addObject(user);
+        modelAndView.addObject("user", user);
         modelAndView.addObject("adminMessage","Fedt man spa du er admin");
         modelAndView.addObject("userMessage","U R USER");
         modelAndView.addObject("apartment", new Apartment());
@@ -83,7 +83,7 @@ public class ApartmentController {
         ModelAndView modelAndView = new ModelAndView("/apartment/add-edit");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-        modelAndView.addObject(user);
+        modelAndView.addObject("user", user);
         Apartment apartment = apartmentService.findById(id);
         modelAndView.addObject("apartment", apartment);
         return modelAndView;
@@ -94,7 +94,7 @@ public class ApartmentController {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-        modelAndView.addObject(user);
+        modelAndView.addObject("user", user);
        // modelAndView.addObject("apartment", new Apartment()); //TODO JEG HAR INGEN IDE PATRICK
 
         if (bindingResult.hasErrors())

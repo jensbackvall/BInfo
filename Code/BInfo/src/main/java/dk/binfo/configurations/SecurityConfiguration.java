@@ -42,7 +42,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			authorizeRequests()
 				.antMatchers("/").permitAll()
 				.antMatchers("/login").permitAll()
+				.antMatchers("/forgotpassword").permitAll()
 				.antMatchers("/apartment/**").hasAuthority("ADMIN")
+				.antMatchers("/users/**").hasAuthority("ADMIN")
 				.antMatchers("/registration").permitAll()
 				.antMatchers("/error").permitAll()
 				// TODO admin skal kunne se alle ventelister (/admin/list/Family/intern/ekstern/connectMrawesomeSexy)
@@ -75,7 +77,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.and().rememberMe().key("rem-me-key").rememberMeParameter("remember-me").rememberMeCookieName("remember-me") // TODO Check om der er sikkershedsproblemer
 				.and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/")
+				.logoutSuccessUrl("/login")
 				.and().exceptionHandling().accessDeniedHandler(accessDeniedHandler());
 	}
 	

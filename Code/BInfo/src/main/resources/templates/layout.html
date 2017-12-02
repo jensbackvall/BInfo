@@ -84,7 +84,7 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="/settings" class="btn btn-default btn-flat">Indstillinger</a>
+                                <a class="btn btn-default btn-flat" th:href="@{'/settings/' + ${user.email}}">Indstillinger</a>
                             </div>
                             <div class="pull-right">
                                 <a href="/logout" class="btn btn-default btn-flat">Log af</a>
@@ -137,7 +137,7 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">Menu</li>
             <!-- Optionally, you can add icons to the links -->
-            <li th:classappend="${#httpServletRequest.getRequestURI() == '/home' ? 'active':''}"><a th:href="@{/home}"><i class="fa fa-home"></i><span>Home</span></a></li>
+            <li th:classappend="${#httpServletRequest.getRequestURI() == '/home' ? 'active':''}"><a th:href="@{/home}"><i class="fa fa-h-square"></i><span>Home</span></a></li>
 
 
             <li class="treeview" sec:authorize="hasAuthority('ADMIN')">
@@ -148,8 +148,11 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li th:classappend="${#httpServletRequest.getRequestURI() == '/apartment' ? 'active':''}"><a th:href="@{/apartment}"><i class="fa fa-users"></i><span>Lejligheder</span></a></li>
-                    <li th:classappend="${#httpServletRequest.getRequestURI() == '/list/internal' ? 'active':''}"><a th:href="@{/list/internal}"><i class="fa fa-users"></i><span>Lister</span></a></li>
+
+                    <li th:classappend="${#httpServletRequest.getRequestURI() == '/apartment' ? 'active':''}"><a th:href="@{/apartment}"><i class="fa fa-home"></i><span>Lejligheder</span></a></li>
+                    <li th:classappend="${#httpServletRequest.getRequestURI() == '/lists' ? 'active':''}"><a th:href="@{/lists}"><i class="fa fa-list"></i><span>Lister</span></a></li>
+                    <li th:classappend="${#httpServletRequest.getRequestURI() == '/users' ? 'active':''}"><a th:href="@{/users}"><i class="fa fa-users"></i><span>Users</span></a></li>
+
                 </ul>
             </li>
         </ul>
@@ -163,7 +166,7 @@
 <footer class="main-footer" th:fragment="site-footer">
         <!-- To the right -->
         <div class="pull-right hidden-xs">
-            Version 0.09
+            Version 0.1.0
         </div>
         <!-- Default to the left -->
         <strong>Copyright &copy; 2017 <a href="#">BoligInfo</a>.</strong> All rights reserved For Über Alles Mig.

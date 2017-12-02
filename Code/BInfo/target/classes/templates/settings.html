@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head th:include="layout :: site-head">
     <title>Admin - Settings</title>
@@ -31,21 +31,35 @@
                 </div>
                 <!-- /.box-header -->
 
-                <!-- form start -->
-                    <div class="box-body">
+                <!-- div start -->
+                    <div  sec:authorize="hasAuthority('ADMIN')"  class="box-body">
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" th:placeholder="${user.email}" disabled>
-                        </div>
-                        <div class="form-group">
-                            <label for="telephoneNumber">Telefonnummer</label>
-                            <input type="tel" class="form-control" id="telephoneNumber" th:placeholder="${user.phoneNumber}" disabled>
                         </div>
                         <div class="form-group">
                             <label for="adgangskode">Adgangskode</label>
                             <input type="password" class="form-control" id="adgangskode" placeholder="********" disabled>
                         </div>
                     </div>
+                <!-- div slut -->
+
+                <!-- div start -->
+                <div  sec:authorize="hasAuthority('user')"  class="box-body">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" th:placeholder="${user.email}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="telephoneNumber">Telefonnummer</label>
+                        <input type="tel" class="form-control" id="telephoneNumber" th:placeholder="${user.phoneNumber}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="adgangskode">Adgangskode</label>
+                        <input type="password" class="form-control" id="adgangskode" placeholder="********" disabled>
+                    </div>
+                </div>
+                <!-- div slut -->
 
 
 
@@ -55,36 +69,41 @@
                 <!-- /.box-header -->
 
                 <!-- form start -->
-                <form role="form">
-                    <div class="box-body">
+                <form sec:authorize="hasAuthority('user')" autocomplete="off" th:action="@{'/settings/' + ${user.email}}" th:object="${user}" method="post" role="form">
+                <div class="box-body">
                         <div class="form-group">
-                            <label for="newTelephoneNumber">Nyt telefonnummer</label>
-                            <input type="tel" class="form-control" id="newTelephoneNumber" placeholder="Nyt telefonnummer">
-                            <br>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <label th:for="newTelephoneNumber">Nyt telefonnummer</label>
+                            <input autocomplete="off" th:id="newTelephoneNumber" th:type="text" th:class="form-control" th:name="phoneNumber" th:placeholder="TelefonNummer">
+                            <label th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="validation-message"></label>
+                        </div>
+                        <div class="form-group">
+                            <label th:for="newPassword">Ny adgangskode</label>
+                            <input autocomplete="off" th:id="newPassword" th:type="password" th:class="form-control" th:name="password" th:placeholder="Adgangskode">
+                            <label th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="validation-message"></label>
                         </div>
                     </div>
+                    <div class="box-footer">
+                        <button type="reset" class="btn btn-default">Reset</button>
+                        <button type="Edit"  value ="Edit" class="btn btn-info pull-right"><a onclick="return confirm('Er du sikker?')">Tilføj</a></button>
+                    </div>
                 </form>
+                <!-- form slut -->
 
                 <!-- form start -->
-                <form role="form">
+                <form sec:authorize="hasAuthority('ADMIN')" autocomplete="off" th:action="@{'/settings/' + ${user.email}}" th:object="${user}" method="post" role="form">
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="oldPassword">Gammel adgangskode</label>
-                            <input type="password" class="form-control" id="oldPassword" placeholder="Gammel adgangskode">
-                        </div>
-                        <div class="form-group">
-                            <label for="newPassword">Ny adgangskode</label>
-                            <input type="password" class="form-control" id="newPassword" placeholder="Ny adgangskode">
-                        </div>
-                        <div class="form-group">
-                            <label for="repeatNewPassword">Gentag ny adgangskode</label>
-                            <input type="password" class="form-control" id="repeatNewPassword" placeholder="Ny adgangskode">
-                            <br>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <label th:for="newPassword">Ny adgangskode</label>
+                            <input autocomplete="off" th:id="newPassword" th:type="password" th:class="form-control" th:name="password" th:placeholder="Adgangskode">
+                            <label th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="validation-message"></label>
                         </div>
                     </div>
+                    <div class="box-footer">
+                        <button type="reset" class="btn btn-default">Reset</button>
+                        <button type="Edit"  value ="Edit" class="btn btn-info pull-right"><a onclick="return confirm('Er du sikker?')">Tilføj</a></button>
+                    </div>
                 </form>
+                <!-- form slut -->
             </div>
         </section>
 

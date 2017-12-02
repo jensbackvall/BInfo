@@ -1,10 +1,6 @@
 package dk.binfo.services;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import javax.transaction.Transactional;
 
@@ -38,13 +34,50 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	}
 
 	@Override
+	@Transactional
+	public List<User> findAll() {
+		return userRepository.findAll();
+	}
+
+	@Override
 	public void saveUser(User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		user.setActive(true);
+		user.setActive(false);
 		user.setPhoneNumber(user.getPhoneNumber());
-		Role userRole = roleRepository.findByRole("ADMIN");
+		Role userRole = roleRepository.findByRole("user");
 		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 		userRepository.save(user);
+	}
+
+	@Override
+	public void adminSaveUser(User user) {
+		Random ran = new Random();
+		String Password = generateString(ran,"qwertyuiopasdfghjklzxcvbnm",8);
+		System.out.println(Password);
+		user.setPassword(bCryptPasswordEncoder.encode(Password));
+		System.out.println(user.getPassword());
+		user.setActive(user.isActive());
+		user.setPhoneNumber(user.getPhoneNumber());
+		Role userRole = roleRepository.findByRole("user");
+		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+		userRepository.save(user);
+	}
+
+	@Override
+	@Transactional
+	public User updateUserSettings(User user){
+		User updateUser = userRepository.findByEmail(user.getEmail());
+		if(!user.getPhoneNumber().equalsIgnoreCase("") && user.getPhoneNumber() != null)
+		{
+			System.out.println(user.getPhoneNumber()); //TODO fjern
+			updateUser.setPhoneNumber(user.getPhoneNumber());
+		}
+		if(!user.getPassword().equalsIgnoreCase("") && user.getPassword() !=null)
+		{
+			System.out.println(user.getPassword()); //TODO fjern
+			updateUser.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+		}
+		return updateUser;
 	}
 
 	@Override
@@ -67,5 +100,16 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 	private UserDetails buildUserForAuthentication(User user, List<GrantedAuthority> authorities) {
 		return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), user.isActive(), true, true, true, authorities);
+	}
+
+
+	public static String generateString(Random rng, String characters, int length)
+	{
+		char[] text = new char[length];
+		for (int i = 0; i < length; i++)
+		{
+			text[i] = characters.charAt(rng.nextInt(characters.length()));
+		}
+		return new String(text);
 	}
 }
